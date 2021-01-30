@@ -11,6 +11,7 @@
         rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 
 <body>
@@ -55,23 +56,32 @@
                     <input class="inp-style" type="date" name="">
                 </div>
             </div>
+
+                <!--First CLass -->
+
+
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="first-class-input" class="inp-style inp-width" type="number" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+                   <!--<button class="btn btn-default "><i class="fas fa-minus"></i></button>--> 
+                    <p><button id="first-class-plus-btn">+</button>
+                         <button id="first-class-minus-btn">-</button></p>
                 </div>
             </div>
             
+            <!--Economy Class-->
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label>Economy ($100)</label>
+                    <input id="economy-class-input" class="inp-style inp-width" type="number" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <!--<button class="btn btn-default"><i class="fas fa-plus"></i></button>-->
+                    <p><button id="economy-class-plus-btn">+</button> 
+                        <button id="economy-class-minus-btn">-</button></p>
                 </div>
             </div>
             <div class="calculations">
@@ -80,7 +90,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="sub-total">$250</p>
                     </div>
                 </div>
 
@@ -98,13 +108,57 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$300</p>
                     </div>
                 </div>
             </div>
             <button class="btn-style">Book Now</button>
         </div>
+
+
+        <script>
+        document.getElementById('first-class-plus-btn').addEventListener("click", function(){
+            const firstClassInput = document.getElementById('first-class-input');
+            const firstClassCount = parseInt(firstClassInput.value);
+            const newFirstCount = firstClassCount +1;
+            firstClassInput.value = newFirstCount;
+            const firstClassTotal = newFirstCount * 150;
+            document.getElementById('sub-total').innerText=firstClassTotal;
+            })
+        document.getElementById('first-class-minus-btn').addEventListener("click", function(){
+            const firstClassInput = document.getElementById('first-class-input');
+            const firstClassCount = parseInt(firstClassInput.value);
+            const newFirstCount = firstClassCount -1;
+            firstClassInput.value = newFirstCount;
+            const firstClassTotal = newFirstCount * 150;
+            document.getElementById('sub-total').innerText=firstClassTotal;
+            })
+
+            //Economy class
+
+            document.getElementById('economy-class-plus-btn').addEventListener("click", function(){
+            const economyClassInput = document.getElementById('economy-class-input');
+            const economyClassCount = parseInt(economyClassInput.value);
+            const newEconomyCount = economyClassCount +1;
+            economyClassInput.value = newEconomyCount;
+            const economyClassTotal = newEconomyCount * 100;
+            document.getElementById('sub-total').innerText=economyClassTotal;
+            })
+        document.getElementById('economy-class-minus-btn').addEventListener("click", function(){
+            const economyClassInput = document.getElementById('economy-class-input');
+            const economyClassCount = parseInt(economyClassInput.value);
+            const newFirstCount = economyClassCount -1;
+            economyClassInput.value = newFirstCount;
+            const economyClassTotal = newFirstCount * 100;
+            document.getElementById('sub-total').innerText= firstClassTotal + economyClassTotal;
+            })
+
+        </script>
     </main>
+
+        
+
+
 
     <!--Thank You-->
 </body>
